@@ -59,16 +59,21 @@ public class Player : MonoBehaviour {
             timer = 0;
 
         if (timer <= 0)
-            ResetNumber();
+            Clear();
 
         transform.Translate(Vector3.right * speed * Time.deltaTime);
 
         tmpTxt.text = numString;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Clear();
+        }
     }
 
     public void MoveToBloc(Bloc bloc)
     {
-        ResetNumber();
+        Clear();
         transform.position = bloc.transform.position;
     }
 
@@ -77,7 +82,7 @@ public class Player : MonoBehaviour {
         timer = timeToType;
     }
 
-    private void ResetNumber()
+    private void Clear()
     {
         numString = "";
     }
